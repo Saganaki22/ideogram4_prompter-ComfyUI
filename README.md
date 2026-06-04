@@ -93,7 +93,9 @@ The Magic Prompt node sends your prompt to Ideogram's free Magic Prompt API:
 
 [https://api.ideogram.ai/v1/ideogram-v4/magic-prompt](https://developer.ideogram.ai/api-reference/api-reference/magic-prompt-v4)
 
-Ideogram returns a structured `json_prompt` and an `aspect_ratio`. This node outputs the prompt as a JSON string and outputs the resolved aspect ratio so it can drive the `Ideogram 4 Resolution Selector`.
+Ideogram returns a structured `json_prompt` and an `aspect_ratio`. The `aspect_ratio` is a top-level field in the API response, not a field inside `json_prompt`. This node outputs the prompt as a JSON string and outputs the resolved aspect ratio so it can drive the `Ideogram 4 Resolution Selector`.
+
+If `AUTO` is selected and Ideogram does not return a top-level `aspect_ratio`, the node raises an error instead of silently guessing a resolution.
 
 Because this uses Ideogram's hosted API, it needs network access to work. The tradeoff is that it saves local compute and avoids a lot of JSON schema hassle.
 

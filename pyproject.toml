@@ -1,7 +1,7 @@
 [project]
 name = "ideogram4_prompter-ComfyUI"
 description = "ComfyUI custom nodes for Ideogram 4 Magic Prompt and Ideogram 4 resolution selection"
-version = "0.1.0"
+version = "0.1.1"
 license = {text = "LICENSE"}
 dependencies = []
 

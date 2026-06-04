@@ -93,7 +93,9 @@ Magic Prompt 节点会把你的提示词发送到 Ideogram 免费 Magic Prompt A
 
 [https://api.ideogram.ai/v1/ideogram-v4/magic-prompt](https://developer.ideogram.ai/api-reference/api-reference/magic-prompt-v4)
 
-Ideogram 会返回结构化的 `json_prompt` 和 `aspect_ratio`。本节点把 `json_prompt` 输出为 JSON 字符串，同时输出解析后的比例，方便连接到 `Ideogram 4 Resolution Selector` 计算宽高。
+Ideogram 会返回结构化的 `json_prompt` 和 `aspect_ratio`。`aspect_ratio` 是 API 响应里的顶层字段，不是在 `json_prompt` 里面。本节点把 `json_prompt` 输出为 JSON 字符串，同时输出解析后的比例，方便连接到 `Ideogram 4 Resolution Selector` 计算宽高。
+
+如果选择 `AUTO`，但 Ideogram 没有返回顶层 `aspect_ratio` 字段，节点会报错，而不是静默猜测一个分辨率。
 
 因为它使用 Ideogram 的在线 API，所以必须有网络连接才能工作。好处是可以节省本地算力，并减少处理 JSON schema 的麻烦。
 

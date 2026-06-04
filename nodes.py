@@ -74,6 +74,23 @@ def _read_error_body(error: urllib.error.HTTPError) -> str:
         return ""
 
 
+def _response_aspect_ratio(data: dict, api_aspect_ratio: str) -> str:
+    response_aspect_ratio = str(data.get("aspect_ratio") or "").strip()
+
+    if response_aspect_ratio:
+        resolved = _resolved_ideogram_aspect_ratio(response_aspect_ratio, fallback="")
+        if resolved:
+            return resolved
+
+    if api_aspect_ratio != "AUTO":
+        return api_aspect_ratio
+
+    raise RuntimeError(
+        "Ideogram did not return a resolved aspect_ratio for AUTO. "
+        "The Magic Prompt API is expected to return aspect_ratio as a top-level response field."
+    )
+
+
 class Ideogram4MagicPrompt:
     @classmethod
     def INPUT_TYPES(cls):
@@ -166,19 +183,18 @@ class Ideogram4MagicPrompt:
         except urllib.error.URLError as error:
             raise RuntimeError(f"Ideogram API request failed: {error.reason}") from error
 
-        fallback_aspect_ratio = "1x1" if api_aspect_ratio == "AUTO" else api_aspect_ratio
-
         try:
             data = json.loads(response_body)
         except json.JSONDecodeError:
             logger.warning("Ideogram returned non-JSON response.")
-            return (response_body, fallback_aspect_ratio)
+            if api_aspect_ratio == "AUTO":
+                raise RuntimeError(
+                    "Ideogram returned a non-JSON response, so AUTO aspect_ratio could not be resolved."
+                )
+            return (response_body, api_aspect_ratio)
 
         magic_prompt = data.get("json_prompt", data)
-        resolved_aspect_ratio = _resolved_ideogram_aspect_ratio(
-            str(data.get("aspect_ratio") or ""),
-            fallback=fallback_aspect_ratio,
-        )
+        resolved_aspect_ratio = _response_aspect_ratio(data, api_aspect_ratio)
         return (
             json.dumps(magic_prompt, ensure_ascii=False, indent=2),
             resolved_aspect_ratio,
