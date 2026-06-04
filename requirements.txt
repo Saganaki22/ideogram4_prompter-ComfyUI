@@ -1,0 +1,2 @@
+# Ideogram4-Prompter-ComfyUI has no external Python dependencies.
+# It uses Python's standard library urllib/json modules for the API request.
