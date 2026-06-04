@@ -1,5 +1,7 @@
 # Ideogram 4 Prompter for ComfyUI
 
+<img width="1936" height="1088" alt="0000_00011" src="https://github.com/user-attachments/assets/32f8b783-7cc8-4289-843b-3f3d51f28437" />
+
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Custom%20Node-blue)](https://github.com/comfyanonymous/ComfyUI)
 [![Publisher](https://img.shields.io/badge/Publisher-saganaki22-purple)](https://github.com/Saganaki22)
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB)](https://www.python.org/)
@@ -7,6 +9,9 @@
 [![Ideogram](https://img.shields.io/badge/Ideogram-4%20Magic%20Prompt-black)](https://developer.ideogram.ai/api-reference/api-reference/magic-prompt-v4)
 
 [English](README.md) | [中文](README_ZH.md)
+
+<img width="1446" height="1184" alt="image" src="https://github.com/user-attachments/assets/7630504e-5cfe-4d1a-911c-75cd45b20955" />
+
 
 Simple ComfyUI custom nodes for Ideogram 4 Magic Prompt and Ideogram 4 aspect-ratio resolution selection.
 
