@@ -1,6 +1,6 @@
-# Ideogram 4 Prompter for ComfyUI
-
 <img width="1936" height="1088" alt="0000_00011" src="https://github.com/user-attachments/assets/32f8b783-7cc8-4289-843b-3f3d51f28437" />
+
+# Ideogram 4 Prompter for ComfyUI
 
 [![ComfyUI](https://img.shields.io/badge/ComfyUI-Custom%20Node-blue)](https://github.com/comfyanonymous/ComfyUI)
 [![Publisher](https://img.shields.io/badge/Publisher-saganaki22-purple)](https://github.com/Saganaki22)
